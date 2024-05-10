@@ -1,3 +1,4 @@
+import Auth from "../../Dto/AuthDto";
 import User from "../../Dto/UserDto";
 import DB from "../../config/config-db";
 import bcrypt from "bcryptjs";
@@ -10,39 +11,38 @@ class UserRepository{
         const SQL = 
         "INSERT INTO users (email, contrasenia, nombres, apellidos, direccion) VALUES (?, ?, ?, ?, ?)";
         const VALUES = [
-            user._email,
-            user._contrasenia,
-            user._nombres,
-            user._apellidos,
-            user._direccion,
+            user.email,
+            user.contrasenia,
+            user.nombres,
+            user.apellidos,
+            user.direccion,
         ];
         return DB.execute(SQL, VALUES);
     }
-
     //Este metodo se encarga de la autenticación del usuario registrado, llenando un DTO en donde esta el email y la contraseña, tomando como referencia el id, contrasenia del email a consultar
-    static async login(auth: Auth){
-        const SQL = 'SELECT id_U, contrasenia FROM users WHERE email = ?';
+    static async login(auth: Auth) {
+        const SQL = "SELECT idU, contrasenia FROM users WHERE email=?";
         const VALUES = [auth.email];
         const RESULT: any = await DB.execute(SQL, VALUES);
-
-        //Este ciclo entra si hay al menos un dato, y luego se comparan las contraseñas retornando si es la correcta o no.
-        if(RESULT[0].length > 0){
-            const USER = RESULT[0][0];
-            const ISPASSWORDVALID = await bcrypt.compare(
-                auth.email,
-                auth.contrasenia
-            );
-            if(ISPASSWORDVALID){
-                return {
-                    UserId: USER.id_U,
-                    logged: true,
-                    status: 'Autenticacion exitosa',
-                };
-            }
-            return { logged: false, status: 'Correo o contraseña invalidos' }
+        
+        if (RESULT[0].length > 0) {
+          const USER = RESULT[0][0];
+          console.log(USER);
+          
+          const ISPASSWORDVALID = await bcrypt.compare(
+            auth.contrasenia,
+            USER.contrasenia
+          );
+          if (ISPASSWORDVALID) {
+            return {
+              userId: USER.idU,
+              logged: true,
+              status: "Successful authentication",
+            };
+          }
+          return { logged: false, status: "Invalid username or passwor" };
         }
-        return { logged: false, status: 'Correo o contraseña invalidos'}
-    }
+        return { logged: false, status: "Invalid username or password" };
+      }
 }
-
 export default UserRepository;

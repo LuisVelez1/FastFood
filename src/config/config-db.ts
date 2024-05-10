@@ -1,8 +1,10 @@
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
 
+//Configuracion de las varibles de entorno
 dotenv.config();
 
+//Funcion que crea la conección a la base de datos
 const DB = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
@@ -12,6 +14,7 @@ const DB = mysql.createPool({
     queueLimit: 0
 });
 
+//Validaciión de la conexión a la base de datos
 DB.getConnection((err, connection) =>{
     if(err){
       console.log("Error al conectar a la base de datos", err);

@@ -1,11 +1,15 @@
-class Auth{
+//DATA TRANFER OBJECT de la autenticacion
+
+class Auth {
     email: string;
-    contrasenia: string;
+    contrasenia: string
     constructor(
         email: string,
-        contrasenia: string,
-    ){
+        contrasenia: string
+    ) {
         this.email = email;
-        this.contrasenia = contrasenia;
+        this.contrasenia = contrasenia
     }
 }
+
+export default Auth

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import UserService from "../../services/User/userService";
 import User from "../../Dto/UserDto";
 
+//Funcion que realiza el registro del usuario a la base de datos
 let register = async (req: Request, res: Response) => {
     try {
         const{
