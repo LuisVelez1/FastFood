@@ -1,0 +1,35 @@
+{
+  "name": "fastfood",
+  "version": "1.0.0",
+  "description": "Aplicacion de comidas rapidas que se encarga del registro y la autenticacion de usuarios, visualizacion de los menus, y la gestion de los pedidos generando un historial de ellos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./dist/app"
+  },
+  "keywords": [
+    "Comida",
+    "rapida",
+    "usuarios",
+    "menu",
+    "pedidos",
+    "domicilio",
+    "entrega"
+  ],
+  "author": "Luis Velez",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.5"
+  }
+}
