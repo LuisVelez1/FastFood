@@ -1,7 +1,7 @@
 import Auth from "../../Dto/AuthDto";
 import User from "../../Dto/UserDto";
 import generateHash from "../../helpers/generateHash";
-import UserRepository from "../../repositories/User/userRepository";
+import UserRepository from "../../repositories/User/UserRepository";
 
 class UserService {
     //Este metodo se encarga del registro de los usuarios

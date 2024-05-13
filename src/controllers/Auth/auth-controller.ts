@@ -10,7 +10,6 @@ let auth = async (req: Request, res: Response) => {
     try {
         const { email, contrasenia } = req.body;
         const LOGIN =  await UserService.login(new Auth(email, contrasenia));
-        console.log(LOGIN);
         
         if(LOGIN.logged){
             const USERID = LOGIN.userId;
