@@ -44,5 +44,14 @@ class UserRepository{
         }
         return { logged: false, status: "Invalid username or password" };
       }
+
+      static async getNameById(idUsuario: number){
+        const SQL = "SELECT nombres FROM users WHERE idU = ?"
+        const VALUES = [idUsuario];
+        const [rows] : any = await DB.execute(SQL, VALUES);
+            if (rows.length > 0) {
+                return rows[0].nombres;
+            }
+      }
 }
 export default UserRepository;

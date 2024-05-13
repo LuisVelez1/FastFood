@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 interface JwtPayload{
-    data: {id: number},
+    data: {idU: number},
     exp: number,
     iat: number
 }
@@ -19,7 +19,7 @@ const VALIDATETOKEN = async (req: Request, res: Response, next: NextFunction) =>
         }
         try {
             let decoded = jwt.verify(TOKEN, process.env.SECRET_SIGNATURE as string) as JwtPayload;
-            req.body.id = decoded.data.id;
+            req.body.id = decoded.data.idU;
             return next();
         } catch (error) {
             return res.status(403).json({ status: 'No autorizado', error: error });
