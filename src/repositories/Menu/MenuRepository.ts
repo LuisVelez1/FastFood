@@ -7,6 +7,11 @@ class MenuRepository{
         const VALUES = [menu.nombre, menu.precio,  menu.descripcion];
         return DB.execute(SQL, VALUES);
     }
+
+    static async getAll(){
+        const SQL = "SELECT idMenu, nombre, precio, descripcion FROM menu ";
+        return DB.execute(SQL);
+    }
 }
 
 export default MenuRepository;

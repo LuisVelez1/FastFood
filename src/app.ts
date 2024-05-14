@@ -6,6 +6,7 @@ import auth from './routes/Auth/auth';
 import add from './routes/Menu/add';
 import createPedido from './routes/Pedido/pedido';
 import historialPedido from './routes/Pedido/historial';
+import getMenu from './routes/Menu/getMenu';
 
 dotenv.config()
 
@@ -17,6 +18,7 @@ app.use('/auth', auth);
 
 //Menu
 app.use('/menu/add', add);
+app.use('/menu/list', getMenu)
 
 //Pedido
 app.use('/pedido', createPedido);
